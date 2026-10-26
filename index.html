@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>einstein — a grade assistant that explains what changed</title>
+    <meta name="description" content="Einstein is an independent grade assistant by Nitrox. It explains what changed instead of just showing a number, with a what-if lab for the assignment you haven't turned in yet.">
+
+    <meta property="og:title" content="einstein — explains what changed">
+    <meta property="og:description" content="A grade assistant with a delta engine and what-if lab. File-first. Works offline.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#3232ff">
+
+    <script src="./theme.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+</head>
+<body>
+
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <section class="hero" aria-label="Einstein introduction">
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="hero-inner">
+                <p class="hero-brand"><span class="mark-dot" aria-hidden="true"></span> nitrox ecosystem</p>
+
+                <h1>
+                    A grade assistant that explains <em>what changed</em> — not just the number.
+                </h1>
+
+                <p class="hero-lede">
+                    Most portals show a sudden drop and leave you guessing which assignment moved the needle. Einstein breaks down the delta, predicts the final, and lets you run "what-if" scenarios before anything is graded.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="btn btn-solid" href="#what-if-lab">Try the lab</a>
+                    <a class="btn btn-ghost" href="./docs/overview.md">Read the vision</a>
+                </div>
+
+                <p class="hero-meta">open · file-first · offline · zero tracking</p>
+            </div>
+        </section>
+
+        <!-- ============ FEATURES ============ -->
+        <section class="section" id="features" aria-label="Core capabilities">
+            <div>
+                <p class="section-label">01 — core capabilities</p>
+                <h2>Three things that change how grades feel.</h2>
+                <p class="section-lede">
+                    Built on the principles in <a href="./docs/overview.md" style="color:var(--accent);">docs/overview.md</a> — transparency over opacity, files over servers, explanation over anxiety.
+                </p>
+
+                <div class="bento-grid">
+                    <article class="bento-card">
+                        <h3>The Delta Engine</h3>
+                        <p>Every new score triggers an instant autopsy: which category shifted, how much leverage it had, and where your trajectory is pointing. Read how it works in <a href="./docs/architecture.md" style="color:var(--accent);">docs/architecture.md</a>.</p>
+                        <span class="card-tag">delta calculation</span>
+                    </article>
+
+                    <article class="bento-card">
+                        <h3>What-If Lab</h3>
+                        <p>Enter hypothetical scores, set a target grade, and see exactly what you need on the final. Dynamic drop-lowest rules update in real time.</p>
+                        <span class="card-tag">simulation</span>
+                    </article>
+
+                    <article class="bento-card bento-wide">
+                        <h3>File-First Sovereignty</h3>
+                        <p>All course data lives in transparent JSON files in your workspace — no proprietary database, no remote server, no vendor lock-in. Inspect, back up, or edit directly. Schema defined in <a href="./docs/data-schema.md" style="color:var(--accent);">docs/data-schema.md</a>.</p>
+                        <span class="card-tag">local storage</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ WHAT-IF LAB TEASER ============ -->
+        <section class="section" id="what-if-lab" aria-label="Interactive what-if lab teaser">
+            <div>
+                <p class="section-label">02 — interactive preview</p>
+                <h2>The What-If Lab</h2>
+                <p class="section-lede">
+                    Before you turn anything in, run the numbers. Change the final exam projection and watch the grade, letter, and required score recalculate instantly.
+                </p>
+
+                <div class="lab-preview">
+                    <h3>Organic Chemistry II — Final Exam Projection</h3>
+                    <p>Move the slider to see the projected overall grade and the minimum score needed to keep a 90%.</p>
+
+                    <div class="sim-row">
+                        <div class="sim-col">
+                            <label for="simPreviewSlider">Project final score</label>
+                            <input type="range" id="simPreviewSlider" min="0" max="100" value="84" step="1" aria-label="Projected final exam score slider">
+                            <div style="margin-top:0.25rem; font-size:0.8rem; color:var(--text-meta);"><span id="simPreviewValue">84</span>%</div>
+                        </div>
+                        <div class="sim-col">
+                            <label>Projected overall</label>
+                            <div class="sim-output" id="simPreviewOverall">--</div>
+                        </div>
+                        <div class="sim-col">
+                            <label>Required for 90%</label>
+                            <div class="sim-output" id="simPreviewRequired">--</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem; color: var(--text-meta); font-size: 0.85rem;">
+                    A live version of the full simulator is in <a href="#" style="color:var(--accent);">script.js</a>. The engine supports weighted categories, drop rules, and backward target-solving — see <a href="./docs/architecture.md" style="color:var(--accent);">docs/architecture.md §3</a>.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ DOCS REFERENCE ============ -->
+        <section class="section" aria-label="Documentation reference">
+            <div>
+                <p class="section-label">03 — documentation</p>
+                <h2>Built with evidence, not guesswork.</h2>
+                <p class="section-lede">
+                    The architecture, data schema, and vision are documented in the repo itself — no hidden specs, no external wikis.
+                </p>
+
+                <div class="docs-ref">
+                    <a href="./docs/overview.md" class="doc-card">
+                        <span>vision</span>
+                        <h4>Overview</h4>
+                        <p>The core problem, the Einstein solution, and the three foundational tenets.</p>
+                    </a>
+                    <a href="./docs/architecture.md" class="doc-card">
+                        <span>architecture</span>
+                        <h4>Delta Engine</h4>
+                        <p>Weighted category grading, delta decomposition, and what-if simulation logic.</p>
+                    </a>
+                    <a href="./docs/data-schema.md" class="doc-card">
+                        <span>data</span>
+                        <h4>Data Schema</h4>
+                        <p>JSON course files, category weights, assignment records, and snapshot history.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" aria-label="Site footer">
+        <div class="footer-brand">
+            <svg width="28" height="28" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+                <path d="M 100 24 L 172 144 L 28 144 Z" fill="none" stroke="#3232ff" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"/>
+                <circle cx="100" cy="92" r="26" fill="none" stroke="#818cf8" stroke-width="10" opacity="0.9"/>
+                <path d="M 64 176 L 136 176 M 100 144 L 100 176" stroke="#3232ff" stroke-width="12" stroke-linecap="round"/>
+                <circle cx="100" cy="24" r="8" fill="#60a5fa"/>
+            </svg>
+            einstein
+        </div>
+        <p>By <a href="https://nitroxhq.github.io/" style="color:inherit; text-decoration:underline; text-underline-offset:0.15em;">nitrox</a> — open, file-first, and built in the open.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+    <script>
+        // Minimal interactive teaser for the landing page
+        (function() {
+            const slider = document.getElementById('simPreviewSlider');
+            const valueText = document.getElementById('simPreviewValue');
+            const overall = document.getElementById('simPreviewOverall');
+            const required = document.getElementById('simPreviewRequired');
+            if (!slider) return;
+
+            const course = { currentStanding: 87.8, categories: [
+                { name: 'Midterm Exams', weight: 40, currentScore: 84.5 },
+                { name: 'Problem Sets', weight: 20, currentScore: 96.0 },
+                { name: 'Lab Practicals', weight: 15, currentScore: 91.0 },
+                { name: 'Comprehensive Final', weight: 25, currentScore: null, isSimulated: true }
+            ], defaultTarget: 90.0, hasDropRule: false, dropBenefit: 0 };
+
+            function recalc() {
+                const proj = parseFloat(slider.value) || 0;
+                valueText.textContent = proj;
+
+                let existing = 0, weight = 0;
+                course.categories.forEach(c => {
+                    if (!c.isSimulated) { existing += (c.currentScore * c.weight) / 100; weight += c.weight; }
+                });
+                const simulated = course.categories.find(c => c.isSimulated);
+                const finalW = simulated ? simulated.weight : 25;
+                const projOverall = existing + (proj * finalW / 100);
+
+                const target = course.defaultTarget;
+                const req = ((target - existing) * 100) / finalW;
+
+                overall.textContent = projOverall.toFixed(1) + '%';
+                if (req > 100) required.innerHTML = `<span style="color:#e07a5f;">>100%</span>`;
+                else if (req <= 0) required.innerHTML = `<span style="color:#81b29a;">0%</span> <span style="font-size:0.8em;color:var(--text-meta);">(locked)</span>`;
+                else required.textContent = req.toFixed(1) + '%';
+            }
+
+            slider.addEventListener('input', recalc);
+            recalc();
+        })();
+    </script>
+</body>
+</html>
