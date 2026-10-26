@@ -1,6 +1,6 @@
 # einstein — todo
 
-*created: 10.26.2026 11:23a | updated: 10.26.2026 11:28a*
+*created: 10.26.2026 11:23a | updated: 10.26.2026 12:35p*
 
 ---
 
@@ -25,6 +25,8 @@
 - [x] craft flagship `README.md` aligned with nitrox / tesseract design standard
   - badges, mission statement, core architectural pillars (file-first, privacy, delta engine)
   - features & consolidation breakdown (replaces RogerHub, manual grade spreadsheets, fragmented LMS grade views)
+  - expanded comparative analysis to evaluate specialized grade apps (GradeWay, Gradiate) vs Einstein
+  - closed-loop feedback question framing, portable wikilinks, and Tesseract ecosystem synergy section
   - the "what-if lab" feature highlight
   - local execution instructions & community links
 - [x] author core documentation in `docs/`:
