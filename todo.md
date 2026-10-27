@@ -30,7 +30,7 @@
   - the "what-if lab" feature highlight
   - local execution instructions & community links
 - [x] author core documentation in `docs/`:
-  - `docs/overview.md` — product vision, philosophy, and user experience
+  - `docs/einstein-app-overview.md` — product vision, philosophy, and user experience
   - `docs/architecture.md` — delta calculation engine, what-if lab simulation logic, and file-first storage
   - `docs/data-schema.md` — local object model for courses, grading scales, category weights, and assignments
 
