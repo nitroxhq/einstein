@@ -1,6 +1,6 @@
 # einstein — todo
 
-*created: 10.26.2026 11:23a | updated: 10.26.2026 12:35p*
+*created: 10.26.2026 11:23a | updated: 10.26.2026 12:49p*
 
 ---
 
@@ -11,11 +11,11 @@
   - offline-first vanilla web showcase (HTML5/CSS3/ES6, no bundler lock-in)
   - componentized navbar (`navbar.html` loaded dynamically via `script.js`)
   - centralized theme state (`theme.js` using `localStorage` key `nitrox-theme`)
-  - offline font assets (`assets/fonts/inter/`, etc.)
+  - offline vector assets and local font styling
   - internal developer notes and task tracking in `.dev/`
 - [x] formulate proposed structure plan for `einstein`
-- [x] document proposed structure in `STRUCTURE.md` for user confirmation
-- [ ] confirm structure plan with user before generating full web scaffolding
+- [x] document proposed structure in `STRUCTURE.md`
+- [x] extract unified design guidelines in `docs/design.md`
 
 ---
 
@@ -33,23 +33,34 @@
   - `docs/overview.md` — product vision, philosophy, and user experience
   - `docs/architecture.md` — delta calculation engine, what-if lab simulation logic, and file-first storage
   - `docs/data-schema.md` — local object model for courses, grading scales, category weights, and assignments
+  - `docs/design.md` — comprehensive design system, color tokens, typography, and component hierarchy
 
 ---
 
-## 3. scaffolding & shared components (pending plan confirmation)
-- [ ] create `.dev/` directory mirroring `nitroxhq.github.io/.dev/`
+## 3. scaffolding & shared components
+- [x] create `.dev/` directory mirroring `nitroxhq.github.io/.dev/`
   - `.dev/todo.md`
   - `.dev/notes.md`
-- [ ] set up `theme.js` (shared `nitrox-theme` preference)
-- [ ] set up `navbar.html` with einstein branding, links, and offline phosphor icons
-- [ ] set up baseline `styles.css` containing nitrox color tokens, typography, and dark/light mode rules
-- [ ] vendor `assets/fonts/inter/` for offline font rendering
+- [x] set up `theme.js` (shared `nitrox-theme` preference: `device` | `dark` | `light`)
+- [x] vendor vector assets:
+  - `assets/white-logo-svg.svg`
+  - `assets/logo/einstein-logo.svg`
+  - `assets/favicon.svg`
+  - `assets/readme/einstein-banner.svg`
+- [x] set up `navbar.html` with einstein branding, divider, nitrox branding, links, and theme toggle button
+- [x] set up `script.js` containing navbar dynamic loader, theme switcher, and interactive What-If simulation engine
 
 ---
 
-## 4. landing page & showcase (deferred to phase 3: "later")
-- [ ] draft simple, elegant `index.html` landing page matching nitrox aesthetic
-- [ ] implement interactive "what-if lab" teaser/playground widget
-- [ ] add typewriter effect and feature showcase bento grid
-- [ ] create `about.html` ("why einstein exists" manifesto)
+## 4. landing page & showcase
+- [/] author `styles.css` containing nitrox color tokens, typography, dark/light theme rules, bento grid, and interactive lab widget (in progress)
+- [/] draft simple, elegant `index.html` landing page matching nitrox aesthetic (in progress)
+- [/] create `about.html` ("why einstein exists" manifesto) (in progress)
 
+---
+
+## 5. future extensions & tooling (phase 4)
+- [ ] standalone interactive lab sandbox (`lab.html`)
+- [ ] sample course data files (`examples/courses/chem-201.json`)
+- [ ] local CLI parser utility
+- [ ] LMS connectors (Canvas, PowerSchool HAC)
