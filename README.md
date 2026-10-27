@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/readme/einstein-banner.svg" alt="Einstein — Intelligent Grade Assistant & What-If Lab" width="100%">
+  <img src="assets/graduation-cap-emoji.svg" alt="Einstein — Graduation cap (interim logo)" width="100%">
 </p>
 
 <p align="center">

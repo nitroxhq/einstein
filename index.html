@@ -71,83 +71,169 @@
             </div>
         </section>
 
-        <!-- comparison -->
-        <section class="section" id="comparison" aria-label="feature comparison table">
-            <p class="section-label">02 — feature comparison</p>
-            <h2>How Einstein isn't just another HAC client.</h2>
+        <!-- ============ APP COMPARISON ============ -->
+        <section class="section" id="app-comparison" aria-label="App comparison">
+            <p class="section-label">02 — app comparison</p>
+            <h2>The same grade, four very different tools.</h2>
             <p class="section-lede">
-                Ditch the clunky spreadsheets and school-managed surveillance. See how Einstein stacks up against other grade checker platforms and ad-hoc calculators.
+                A deeper cut of the <a href="https://github.com/nitroxhq/einstein#-feature-comparison" style="color:var(--accent);">README comparison</a>: what each kind of tool actually does, where it stops being useful, and which one answers the question you're asking at 11pm.
             </p>
 
-            <table class="comparison">
-  <thead>
-    <tr>
-      <th>Capability</th>
-      <th>Standard LMS<br><small style="color:#8b949e; font-weight:normal;">(Canvas, Blackboard, PowerSchool)</small></th>
-      <th>Ad-Hoc Calculators<br><small style="color:#8b949e; font-weight:normal;">(RogerHub, Excel sheets)</small></th>
-      <th>Other Grade Calculators<br><small style="color:#8b949e; font-weight:normal;">(GradeWay, <a href="https://gradiate.app/" target="_blank" rel="noopener">Gradiate</a>)</small></th>
-      <th>Einstein</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Delta Explanation</td>
-      <td>❌ Just displays raw number changes</td>
-      <td>❌ No historical tracking</td>
-      <td>⚠️ Trend lines &amp; change logs (no causal breakdown)</td>
-      <td>✅ <strong>Full plain-English impact breakdown</strong></td>
-    </tr>
-    <tr>
-      <td>What-If Simulation</td>
-      <td>⚠️ Clunky or read-only</td>
-      <td>⚠️ Single isolated formulas</td>
-      <td>⚠️ In-app score mocking (tied to portal sync)</td>
-      <td>✅ <strong>Multi-course interactive sandbox</strong></td>
-    </tr>
-    <tr>
-      <td>Category Weight Math</td>
-      <td>❌ Opaque category grouping</td>
-      <td>⚠️ Requires manual formula setup</td>
-      <td>⚠️ Syncs LMS categories; limited custom curve math</td>
-      <td>✅ <strong>Automatic weight &amp; points resolution</strong></td>
-    </tr>
-    <tr>
-      <td>Drop-Lowest Rules</td>
-      <td>⚠️ Frequently miscalculated</td>
-      <td>❌ Manual spreadsheet logic</td>
-      <td>⚠️ Mirrors LMS rules; often bypassed in what-ifs</td>
-      <td>✅ <strong>Automated dynamic drop recalculations</strong></td>
-    </tr>
-    <tr>
-      <td>Data Privacy</td>
-      <td>❌ School-managed surveillance</td>
-      <td>⚠️ Ad-supported websites</td>
-      <td>⚠️ Third-party apps require school portal logins</td>
-      <td>✅ <strong>100% local-first &amp; offline</strong></td>
-    </tr>
-    <tr>
-      <td>Open File Formats</td>
-      <td>❌ Locked in institutional databases</td>
-      <td>⚠️ Proprietary spreadsheet formats</td>
-      <td>❌ Proprietary mobile app cache / closed data</td>
-      <td>✅ <strong>Human-readable JSON/Markdown</strong></td>
-    </tr>
-    <tr>
-      <td>Platform Freedom</td>
-      <td>❌ Institutional portal lock-in</td>
-      <td>✅ Standalone web tools</td>
-      <td>❌ Limited to supported LMSs (HAC, PowerSchool)</td>
-      <td>✅ <strong>100% portal-agnostic &amp; self-contained</strong></td>
-    </tr>
-    <tr>
-      <td>Actionable Insights</td>
-      <td>❌ None</td>
-      <td>❌ None</td>
-      <td>⚠️ Basic GPA goals &amp; push notification alerts</td>
-      <td>✅ <strong>Target score trajectories &amp; alerts</strong></td>
-    </tr>
-  </tbody>
-</table>
+            <div class="app-grid">
+                <article class="app-card">
+                    <p class="app-kicker">standard lms</p>
+                    <h3>Canvas, Blackboard, PowerSchool</h3>
+                    <p class="app-what">Holds the official gradebook. It is the source of truth because your teacher types the scores there.</p>
+                    <dl class="app-facts">
+                        <div><dt>Wins at</dt><dd>Being authoritative. Every other tool is a copy of it.</dd></div>
+                        <div><dt>Breaks down at</dt><dd>Explaining itself. A zero for something you haven't turned in lands in the total like a real score, and category weights stay opaque.</dd></div>
+                    </dl>
+                    <p class="app-verdict">Trust its numbers, not its narrative.</p>
+                </article>
+
+                <article class="app-card">
+                    <p class="app-kicker">ad-hoc calculators</p>
+                    <h3>RogerHub, Excel sheets</h3>
+                    <p class="app-what">One formula for one question: what do I need on the final to keep my A?</p>
+                    <dl class="app-facts">
+                        <div><dt>Wins at</dt><dd>Speed. No account, no sync, no permission — type numbers, get an answer.</dd></div>
+                        <div><dt>Breaks down at</dt><dd>Anything past a single course and a single term: no history, no drop rules, no GPA picture.</dd></div>
+                    </dl>
+                    <p class="app-verdict">Great at the one question, blind to the semester around it.</p>
+                </article>
+
+                <article class="app-card">
+                    <p class="app-kicker">other grade apps</p>
+                    <h3>GradeWay, <a href="https://gradiate.app/" target="_blank" rel="noopener">Gradiate</a></h3>
+                    <p class="app-what">Mobile apps that pull grades from a supported portal and layer GPA goals and alerts on top.</p>
+                    <dl class="app-facts">
+                        <div><dt>Wins at</dt><dd>Polished mobile UI, notifications, and zero manual entry once a portal is linked.</dd></div>
+                        <div><dt>Breaks down at</dt><dd>Portal dependence (HAC, PowerSchool), closed data, and what-ifs that inherit the portal's own category math.</dd></div>
+                    </dl>
+                    <p class="app-verdict">Convenient if your school is on the list. Einstein doesn't need a list.</p>
+                </article>
+
+                <article class="app-card app-card-einstein">
+                    <p class="app-kicker">einstein</p>
+                    <h3>Explain first, then simulate</h3>
+                    <p class="app-what">Reads course files you own, decomposes every grade change, and models the semester split explicitly — categories weighted inside the coursework share, the final weighted on its own.</p>
+                    <dl class="app-facts">
+                        <div><dt>Wins at</dt><dd>Saying why a number moved, and exactly what the next one has to be.</dd></div>
+                        <div><dt>Breaks down at</dt><dd>It's early: there's no portal sync yet, so a course starts as a file you write or import.</dd></div>
+                    </dl>
+                    <p class="app-verdict">Different trade: less automation, more explanation, and the data stays yours.</p>
+                </article>
+            </div>
+
+            <div class="comparison-scroll" tabindex="0" role="region" aria-label="Detailed capability comparison, scrolls sideways">
+                <table class="deep-comparison">
+                    <thead>
+                        <tr>
+                            <th scope="col">Capability</th>
+                            <th scope="col">Standard LMS <span class="th-sub">Canvas, Blackboard, PowerSchool</span></th>
+                            <th scope="col">Ad-hoc calculators <span class="th-sub">RogerHub, Excel sheets</span></th>
+                            <th scope="col">Other grade apps <span class="th-sub">GradeWay, Gradiate</span></th>
+                            <th scope="col" class="col-einstein">Einstein</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Delta explanation</th>
+                            <td>❌ Raw number changes only</td>
+                            <td>❌ No history to compare</td>
+                            <td>⚠️ Trend lines, no causal breakdown</td>
+                            <td class="col-einstein">✅ <strong>Plain-English impact breakdown</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">What-if simulation</th>
+                            <td>⚠️ Clunky or read-only</td>
+                            <td>⚠️ One isolated formula</td>
+                            <td>⚠️ Score mocking tied to portal sync</td>
+                            <td class="col-einstein">✅ <strong>Multi-course sandbox</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Category weight math</th>
+                            <td>❌ Opaque category grouping</td>
+                            <td>⚠️ You build the formula yourself</td>
+                            <td>⚠️ Mirrors LMS categories</td>
+                            <td class="col-einstein">✅ <strong>Automatic weight &amp; point resolution</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Coursework vs final split</th>
+                            <td>❌ Baked in, never shown</td>
+                            <td>⚠️ You model it by hand</td>
+                            <td>⚠️ Whatever the portal assumes</td>
+                            <td class="col-einstein">✅ <strong>Explicit: categories × 85% + final × 15%</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Drop-lowest rules</th>
+                            <td>⚠️ Frequently miscalculated</td>
+                            <td>❌ Manual spreadsheet logic</td>
+                            <td>⚠️ Mirrors LMS, skipped in what-ifs</td>
+                            <td class="col-einstein">✅ <strong>Dynamic drop recalculations</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Curve &amp; extra credit</th>
+                            <td>⚠️ Applied silently, if at all</td>
+                            <td>⚠️ Manual offsets</td>
+                            <td>⚠️ Limited custom curve math</td>
+                            <td class="col-einstein">✅ <strong>Modeled and explained</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Assignment leverage</th>
+                            <td>❌ Not shown</td>
+                            <td>❌ Not shown</td>
+                            <td>⚠️ Basic priority hints</td>
+                            <td class="col-einstein">✅ <strong>Ranked by impact on the final</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Cross-course GPA planning</th>
+                            <td>❌ Term GPA only</td>
+                            <td>❌ One course at a time</td>
+                            <td>⚠️ Per-course GPA goals</td>
+                            <td class="col-einstein">✅ <strong>Trade-offs across courses</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Data privacy</th>
+                            <td>❌ School-managed</td>
+                            <td>⚠️ Ad-supported sites</td>
+                            <td>⚠️ Portal credentials in a third party</td>
+                            <td class="col-einstein">✅ <strong>100% local, offline</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Open file formats</th>
+                            <td>❌ Institutional database</td>
+                            <td>⚠️ Proprietary spreadsheets</td>
+                            <td>❌ Closed app data</td>
+                            <td class="col-einstein">✅ <strong>Human-readable JSON/Markdown</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Platform freedom</th>
+                            <td>❌ Portal lock-in</td>
+                            <td>✅ Any browser</td>
+                            <td>❌ Supported-LMS shortlist</td>
+                            <td class="col-einstein">✅ <strong>Portal-agnostic</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Setup cost</th>
+                            <td>✅ None, it's already there</td>
+                            <td>⚠️ Build the formula first</td>
+                            <td>⚠️ Account, link portal, grant access</td>
+                            <td class="col-einstein">⚠️ <strong>Write or import a course file</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Price</th>
+                            <td>✅ Paid by tuition</td>
+                            <td>✅ Free</td>
+                            <td>⚠️ Free tier or subscription</td>
+                            <td class="col-einstein">✅ <strong>Free &amp; open source</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="comparison-note">
+                Reflects public feature sets as of October 2026 — corrections welcome via a GitHub issue. Einstein's honest losses are the last two rows: no portal sync yet, and a course file to set up.
+            </p>
         </section>
 
         <!-- ============ WHAT-IF LAB TEASER ============ -->
@@ -160,8 +246,8 @@
                 </p>
 
                 <div class="lab-preview">
-                    <h3>Organic Chemistry II — Final Exam Projection <span class="lab-badge">preview</span></h3>
-                    <p>Move the slider to see the projected overall grade and the minimum score needed to keep a 90%.</p>
+                    <h3>Organic Chemistry II — Semester Projection <span class="lab-badge">preview</span></h3>
+                    <p>Category weights sit <em>inside</em> the coursework share. The final exam is weighted separately, on top of it — the same way most syllabi actually read.</p>
 
                     <div class="lab-grid">
                         <div class="lab-table-wrap">
@@ -170,32 +256,49 @@
                                     <tr>
                                         <th>Category</th>
                                         <th>Avg</th>
-                                        <th>Weight</th>
+                                        <th>Weight in coursework</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td class="cat-name">Major avg</td>
-                                        <td><input type="text" id="labMajorAvg" value="84.5" aria-label="Major average score"></td>
-                                        <td><input type="text" id="labMajorWeight" value="40" aria-label="Major weight percent"></td>
+                                        <td><input type="text" id="labMajorAvg" value="92.0" aria-label="Major average score"></td>
+                                        <td><input type="text" id="labMajorWeight" value="60" aria-label="Major weight within coursework"></td>
                                     </tr>
                                     <tr>
                                         <td class="cat-name">Minor avg</td>
                                         <td><input type="text" id="labMinorAvg" value="96.0" aria-label="Minor average score"></td>
-                                        <td><input type="text" id="labMinorWeight" value="20" aria-label="Minor weight percent"></td>
+                                        <td><input type="text" id="labMinorWeight" value="20" aria-label="Minor weight within coursework"></td>
                                     </tr>
                                     <tr>
                                         <td class="cat-name">Other grade avg</td>
                                         <td><input type="text" id="labOtherAvg" value="91.0" aria-label="Other grade average score"></td>
-                                        <td><input type="text" id="labOtherWeight" value="15" aria-label="Other grade weight percent"></td>
+                                        <td><input type="text" id="labOtherWeight" value="10" aria-label="Other grade weight within coursework"></td>
+                                    </tr>
+                                    <tr class="lab-subtotal">
+                                        <td class="cat-name">Coursework</td>
+                                        <td id="labCourseworkAvg">--</td>
+                                        <td id="labCourseworkTotal">90</td>
                                     </tr>
                                     <tr>
                                         <td class="cat-name">Comprehensive Final</td>
                                         <td><em>simulating</em></td>
-                                        <td><input type="text" id="labFinalWeight" value="25" aria-label="Final exam weight percent"></td>
+                                        <td id="labFinalWeightCell">15%</td>
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <div class="lab-split">
+                                <label for="labCourseworkWeight">Semester coursework weight</label>
+                                <div class="lab-split-row">
+                                    <input type="text" id="labCourseworkWeight" value="85" aria-describedby="labSplitHelp" aria-label="Semester coursework weight percent">
+                                    <span class="lab-split-unit">% of the semester</span>
+                                </div>
+                                <p class="lab-split-help" id="labSplitHelp">
+                                    The categories above are weighted inside <strong id="labCourseworkShare">85%</strong>. The final exam takes the remaining <strong id="labFinalShare">15%</strong>.
+                                </p>
+                            </div>
+                            <p class="lab-math" id="labMathNote">--</p>
                         </div>
 
                         <div class="lab-sim">
@@ -326,26 +429,69 @@
                 const proj = parseFloat(slider.value) || 0;
                 valueText.textContent = proj;
 
-                let existing = 0;
+                // 1. Categories are weighted *inside* the coursework share, so
+                //    normalise by the sum of their weights instead of assuming 100.
+                let weightedPoints = 0;
+                let weightSum = 0;
                 rows.forEach((row) => {
-                    existing += (num(row.avg) * num(row.weight)) / 100;
+                    const w = num(row.weight);
+                    weightedPoints += num(row.avg) * w;
+                    weightSum += w;
                 });
+                const courseworkAvg = weightSum > 0 ? weightedPoints / weightSum : 0;
 
-                const finalW = num('labFinalWeight') || 25;
-                const projOverall = existing + (proj * finalW / 100);
-                const req = ((target - existing) * 100) / finalW;
+                // 2. The coursework share and the final share are complements.
+                const cwPct = Math.min(100, Math.max(0, num('labCourseworkWeight')));
+                const cwShare = cwPct / 100;
+                const finalShare = 1 - cwShare;
+
+                // 3. (coursework × share) + (final × share) = semester grade.
+                const projOverall = courseworkAvg * cwShare + proj * finalShare;
+
+                // Required final score to land exactly on the target.
+                let req;
+                if (finalShare <= 0.0001) {
+                    req = courseworkAvg >= target ? 0 : Infinity;
+                } else {
+                    req = (target - courseworkAvg * cwShare) / finalShare;
+                }
 
                 overall.textContent = projOverall.toFixed(1) + '%';
-                if (req > 100) required.innerHTML = `<span style="color:#e07a5f;">&gt;100%</span>`;
-                else if (req <= 0) required.innerHTML = `<span style="color:#81b29a;">0%</span> <span style="font-size:0.8em;color:var(--text-meta);">(locked)</span>`;
-                else required.textContent = req.toFixed(1) + '%';
+                if (finalShare <= 0.0001) {
+                    required.innerHTML = `<span style="color:var(--text-meta);font-size:0.7em;">final not counted</span>`;
+                } else if (req > 100) {
+                    required.innerHTML = `<span style="color:#e07a5f;">&gt;100%</span>`;
+                } else if (req <= 0) {
+                    required.innerHTML = `<span style="color:#81b29a;">0%</span> <span style="font-size:0.8em;color:var(--text-meta);">(locked)</span>`;
+                } else {
+                    required.textContent = req.toFixed(1) + '%';
+                }
 
                 const termGpa = (OTHER_COURSES * OTHER_GPA + toGpaPoints(projOverall)) / (OTHER_COURSES + 1);
                 if (gpaOutput) gpaOutput.textContent = termGpa.toFixed(2);
+
+                // Keep the table honest about what it is showing.
+                const cwAvgCell = document.getElementById('labCourseworkAvg');
+                const cwTotalCell = document.getElementById('labCourseworkTotal');
+                const finalWeightCell = document.getElementById('labFinalWeightCell');
+                const cwShareText = document.getElementById('labCourseworkShare');
+                const finalShareText = document.getElementById('labFinalShare');
+                const mathNote = document.getElementById('labMathNote');
+
+                if (cwAvgCell) cwAvgCell.textContent = courseworkAvg.toFixed(1) + '%';
+                if (cwTotalCell) cwTotalCell.textContent = weightSum;
+                if (finalWeightCell) finalWeightCell.textContent = (finalShare * 100).toFixed(0) + '%';
+                if (cwShareText) cwShareText.textContent = cwPct.toFixed(0) + '%';
+                if (finalShareText) finalShareText.textContent = (finalShare * 100).toFixed(0) + '%';
+                if (mathNote) {
+                    mathNote.textContent =
+                        `(${courseworkAvg.toFixed(1)}% coursework × ${cwPct.toFixed(0)}%) + ` +
+                        `(${proj}% final × ${(finalShare * 100).toFixed(0)}%) = ${projOverall.toFixed(1)}%`;
+                }
             }
 
             slider.addEventListener('input', recalc);
-            document.querySelectorAll('.lab-table input').forEach((input) => {
+            document.querySelectorAll('.lab-table input, #labCourseworkWeight').forEach((input) => {
                 input.addEventListener('input', recalc);
             });
             recalc();
