@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about — why I built einstein</title>
+    <meta name="description" content="Why Einstein exists: a grade assistant that explains what changed, keeps your data in files, and runs offline.">
+
+    <meta property="og:title" content="about — why I built einstein">
+    <meta property="og:description" content="The problem, the principles, and the reason Einstein exists.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#3232ff">
+
+    <script src="./theme.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" type="image/svg+xml" href="./assets/graduation-cap-emoji.svg">
+</head>
+<body>
+
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <section class="hero about-hero" aria-label="About Einstein">
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="hero-inner">
+                <p class="section-label">about</p>
+                <h1>Why I built <em>einstein</em>.</h1>
+                <p class="hero-lede">
+                    A grade portal can tell you your average dropped. It can't tell you why, what it cost you, or what you need next. I wanted the opposite of that.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" aria-label="The problem">
+            <div>
+                <p class="section-label">01 — the problem</p>
+                <h2>Grades move. Portals don't explain.</h2>
+                <p class="section-lede">
+                    Checking a grade is usually an anxious guess. The number changed, but the reason stayed hidden behind a syllabus PDF and a weighted formula.
+                </p>
+
+                <div class="bento-grid">
+                    <article class="bento-card">
+                        <h3>The sudden drop</h3>
+                        <p>An assignment posts and your average slips from 89.4% to 86.8%. The portal shows the new number and nothing else — no category, no leverage, no cause.</p>
+                        <span class="card-tag">opacity</span>
+                    </article>
+                    <article class="bento-card">
+                        <h3>Weights are hidden math</h3>
+                        <p>Exams at 45%, projects at 25%, quizzes at 15%, homework at 10%, participation at 5% — plus dropped scores and curves. The formula decides your grade, but you never see it work.</p>
+                        <span class="card-tag">complexity</span>
+                    </article>
+                    <article class="bento-card">
+                        <h3>“What do I need on the final?”</h3>
+                        <p>So you open an ad-ridden calculator, retype your syllabus, and hope it guessed the same rules your teacher did.</p>
+                        <span class="card-tag">guesswork</span>
+                    </article>
+                    <article class="bento-card">
+                        <h3>Your data isn't yours</h3>
+                        <p>Canvas, PowerSchool, and Blackboard are built for administrators. Your performance lives in their database, on their terms.</p>
+                        <span class="card-tag">ownership</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-label="Why I made it">
+            <div>
+                <p class="section-label">02 — why I made it</p>
+                <h2>I wanted the explanation, not the verdict.</h2>
+                <p class="section-lede">
+                    Einstein started with a simple frustration: a grade should come with a reason. If a score moved, you should be able to see which assignment moved it, how much the weight amplified it, and what that means for the next one.
+                </p>
+                <p class="section-lede">
+                    I also didn't want another account, another server, or another dashboard that treats a student's data as inventory. So Einstein is file-first: the app is the interface to your data, not the owner of it. Everything is readable JSON and Markdown, stored locally, and it works offline.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" aria-label="What it does">
+            <div>
+                <p class="section-label">03 — what it does</p>
+                <h2>Three ideas, one grade assistant.</h2>
+                <p class="section-lede">The same three tenets that shape every part of the app.</p>
+
+                <div class="bento-grid">
+                    <article class="bento-card">
+                        <h3>The Delta Engine</h3>
+                        <p>Every new score gets an instant autopsy: which category shifted, how much leverage it had, and whether your trajectory is up or down. The math is documented in <a href="./docs/architecture.md" style="color:var(--accent);">docs/architecture.md</a>.</p>
+                        <span class="card-tag">delta calculation</span>
+                    </article>
+                    <article class="bento-card">
+                        <h3>The What-If Lab</h3>
+                        <p>Enter hypothetical scores, set a target, and see the exact minimum you need across what's left. Drop-lowest rules update in real time. Try the <a href="./index.html#what-if-lab" style="color:var(--accent);">preview</a>.</p>
+                        <span class="card-tag">simulation</span>
+                    </article>
+                    <article class="bento-card bento-wide">
+                        <h3>File-first sovereignty</h3>
+                        <p>Course data, grade history, and simulations live in human-readable files on your device. No proprietary database, no remote server, no telemetry. The schema is in <a href="./docs/data-schema.md" style="color:var(--accent);">docs/data-schema.md</a>.</p>
+                        <span class="card-tag">local storage</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-label="Who it's for">
+            <div>
+                <p class="section-label">04 — who it's for</p>
+                <h2>Anyone whose grade is decided by a formula.</h2>
+                <p class="section-lede">
+                    High school, undergraduate, and graduate students with weighted syllabi, dropped scores, curved exams, and finals that carry too much weight. If a portal gives you a number and no explanation, Einstein is the missing second half.
+                </p>
+            </div>
+        </section>
+
+        <section class="section cta-section" aria-label="Get started">
+            <div class="cta-card">
+                <p class="section-label">05 — get started</p>
+                <h2>See what changed. Then decide what's next.</h2>
+                <p class="cta-lede">Run the lab, read the vision, or clone the repo and keep your data in files you own.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-solid" href="./index.html#what-if-lab">Try the lab</a>
+                    <a class="btn btn-ghost" href="./docs/einstein-app-overview.md">Read the vision</a>
+                    <a class="btn btn-ghost" href="https://github.com/nitroxhq/einstein" target="_blank" rel="noopener">github ↗</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" aria-label="Site footer">
+        <div class="footer-brand">
+            <span aria-label="Einstein logo" style="font-size:1.1rem;">🎓</span> einstein
+        </div>
+        <p>By <a href="https://nitroxhq.github.io/" style="color:inherit; text-decoration:underline; text-underline-offset:0.15em;">nitrox</a> — open, file-first, and built in the open.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>

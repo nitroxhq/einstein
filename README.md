@@ -155,7 +155,7 @@ Install the **Live Server** extension, right-click on `index.html`, and select *
 ## 📚 Project Documentation
 
 - ![STRUCTURE.md|Repository Architecture & Structure Plan](STRUCTURE.md)
-- ![docs/overview.md|System Overview & Vision](docs/overview.md)
+- ![docs/einstein-app-overview.md|System Overview & Vision](docs/einstein-app-overview.md)
 - ![docs/architecture.md|Calculation Engine & What-If Logic](docs/architecture.md)
 - ![docs/data-schema.md|Local Data Schema (Course & Assignment Format)](docs/data-schema.md)
 - ![todo.md|Task Tracker & Roadmap](todo.md)

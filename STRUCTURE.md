@@ -41,7 +41,7 @@ einstein/
 ├── .git/                               # Version control (main branch, remote: nitroxhq/einstein)
 │
 ├── docs/                               # Comprehensive project documentation
-│   ├── overview.md                     # Vision, target audience, core capabilities
+│   ├── einstein-app-overview.md                     # Vision, target audience, core capabilities
 │   ├── architecture.md                 # Delta Engine, What-If Lab logic, offline storage
 │   ├── data-schema.md                  # JSON/YAML data format for courses, weights, assignments
 │   └── lms-integrations.md             # Connectors for Canvas, Blackboard, PowerSchool, Google Classroom

@@ -35,15 +35,29 @@ function initNavbar() {
 }
 
 function bindNavbarEvents() {
-  // 1. Highlight active navigation link
+  // 1. Highlight the active navigation link. Match the link's file *and* its
+  //    hash: every index.html#section link shares the current file, so matching
+  //    on the path alone lights all of them up at once.
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const navLinks = document.querySelectorAll('.nav-link');
-  navLinks.forEach((link) => {
-    const href = link.getAttribute('href').split('#')[0].replace(/^\.\//, '');
-    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
-      link.classList.add('active');
-    }
-  });
+
+  const markActive = () => {
+    const currentHash = window.location.hash.replace('#', '');
+    navLinks.forEach((link) => {
+      const href = (link.getAttribute('href') || '').replace(/^\.\//, '');
+      const [file, hash = ''] = href.split('#');
+      const match = file === currentPath && hash === currentHash;
+      link.classList.toggle('active', match);
+      if (match) {
+        link.setAttribute('aria-current', hash ? 'location' : 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  };
+
+  markActive();
+  window.addEventListener('hashchange', markActive);
 
   // 2. Mobile hamburger menu toggle
   const hamburger = document.getElementById('navHamburger');
@@ -97,25 +111,28 @@ function updateThemeButtonUI() {
 
 function renderFallbackNavbar(container) {
   container.innerHTML = `
-    <div class="nav-brand-group">
-      <a href="./index.html" class="nav-brand">
-        <span class="nav-brand-text">einstein</span>
-      </a>
-      <span class="brand-divider">|</span>
-      <a href="https://nitroxhq.github.io/" class="nitrox-brand">
-        <span class="nitrox-brand-text">nitrox</span>
-      </a>
-    </div>
-    <div class="nav-actions">
+    <nav class="nitrox-nav" aria-label="Main navigation">
+      <div class="nav-brand-group">
+        <a href="./index.html" class="nav-brand">
+          <span class="nav-logo" aria-hidden="true">🎓</span>
+          <span class="nav-brand-text">einstein</span>
+        </a>
+        <a href="https://nitroxhq.github.io/" class="nitrox-brand">
+          <svg class="nitrox-logo" viewBox="0 0 141 152" width="13" height="15" fill="#3232ff" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M83.0651 103.897C77.2824 113.882 62.8631 113.872 57.0943 103.879L12.9996 27.5C7.22423 17.496 14.4492 4.99241 26.0006 5.00039L114.296 5.06139C125.847 5.06938 133.055 17.583 127.266 27.579L83.0651 103.897Z"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M83.0651 47.2766C77.2824 37.292 62.8631 37.302 57.0943 47.2945L12.9997 123.674C7.22425 133.678 14.4492 146.181 26.0006 146.173L114.296 146.112C125.847 146.104 133.055 133.591 127.266 123.595L83.0651 47.2766Z"/>
+          </svg>
+          <span class="nitrox-brand-text">nitrox</span>
+        </a>
+      </div>
       <div class="nav-menu">
         <ul>
           <li><a href="./index.html#features" class="nav-link">features</a></li>
           <li><a href="./index.html#what-if-lab" class="nav-link">what-if lab</a></li>
           <li><a href="./index.html#comparison" class="nav-link">comparison</a></li>
-          <li><a href="./about.html" class="nav-link">about</a></li>
         </ul>
       </div>
-    </div>
+    </nav>
   `;
 }
 
