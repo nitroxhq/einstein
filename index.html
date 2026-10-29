@@ -79,53 +79,7 @@
                 A deeper cut of the <a href="https://github.com/nitroxhq/einstein#-feature-comparison" style="color:var(--accent);">README comparison</a>: what each kind of tool actually does, where it stops being useful, and which one answers the question you're asking at 11pm.
             </p>
 
-            <div class="app-grid">
-                <article class="app-card">
-                    <p class="app-kicker">standard lms</p>
-                    <h3>Canvas, Blackboard, PowerSchool</h3>
-                    <p class="app-what">Holds the official gradebook. It is the source of truth because your teacher types the scores there.</p>
-                    <dl class="app-facts">
-                        <div><dt>Wins at</dt><dd>Being authoritative. Every other tool is a copy of it.</dd></div>
-                        <div><dt>Breaks down at</dt><dd>Explaining itself. A zero for something you haven't turned in lands in the total like a real score, and category weights stay opaque.</dd></div>
-                    </dl>
-                    <p class="app-verdict">Trust its numbers, not its narrative.</p>
-                </article>
-
-                <article class="app-card">
-                    <p class="app-kicker">ad-hoc calculators</p>
-                    <h3>RogerHub, Excel sheets</h3>
-                    <p class="app-what">One formula for one question: what do I need on the final to keep my A?</p>
-                    <dl class="app-facts">
-                        <div><dt>Wins at</dt><dd>Speed. No account, no sync, no permission — type numbers, get an answer.</dd></div>
-                        <div><dt>Breaks down at</dt><dd>Anything past a single course and a single term: no history, no drop rules, no GPA picture.</dd></div>
-                    </dl>
-                    <p class="app-verdict">Great at the one question, blind to the semester around it.</p>
-                </article>
-
-                <article class="app-card">
-                    <p class="app-kicker">other grade apps</p>
-                    <h3>GradeWay, <a href="https://gradiate.app/" target="_blank" rel="noopener">Gradiate</a></h3>
-                    <p class="app-what">Mobile apps that pull grades from a supported portal and layer GPA goals and alerts on top.</p>
-                    <dl class="app-facts">
-                        <div><dt>Wins at</dt><dd>Polished mobile UI, notifications, and zero manual entry once a portal is linked.</dd></div>
-                        <div><dt>Breaks down at</dt><dd>Portal dependence (HAC, PowerSchool), closed data, and what-ifs that inherit the portal's own category math.</dd></div>
-                    </dl>
-                    <p class="app-verdict">Convenient if your school is on the list. Einstein doesn't need a list.</p>
-                </article>
-
-                <article class="app-card app-card-einstein">
-                    <p class="app-kicker">einstein</p>
-                    <h3>Explain first, then simulate</h3>
-                    <p class="app-what">Reads course files you own, decomposes every grade change, and models the semester split explicitly — categories weighted inside the coursework share, the final weighted on its own.</p>
-                    <dl class="app-facts">
-                        <div><dt>Wins at</dt><dd>Saying why a number moved, and exactly what the next one has to be.</dd></div>
-                        <div><dt>Breaks down at</dt><dd>It's early: there's no portal sync yet, so a course starts as a file you write or import.</dd></div>
-                    </dl>
-                    <p class="app-verdict">Different trade: less automation, more explanation, and the data stays yours.</p>
-                </article>
-            </div>
-
-            <div class="comparison-scroll" tabindex="0" role="region" aria-label="Detailed capability comparison, scrolls sideways">
+                        <div class="comparison-scroll" tabindex="0" role="region" aria-label="Detailed capability comparison, scrolls sideways">
                 <table class="deep-comparison">
                     <thead>
                         <tr>
@@ -234,6 +188,53 @@
             <p class="comparison-note">
                 Reflects public feature sets as of October 2026 — corrections welcome via a GitHub issue. Einstein's honest losses are the last two rows: no portal sync yet, and a course file to set up.
             </p>
+
+            <div class="app-grid">
+                <article class="app-card">
+                    <p class="app-kicker">standard lms</p>
+                    <h3>Canvas, Blackboard, PowerSchool</h3>
+                    <p class="app-what">Holds the official gradebook. It is the source of truth because your teacher types the scores there.</p>
+                    <dl class="app-facts">
+                        <div><dt>Wins at</dt><dd>Being authoritative. Every other tool is a copy of it.</dd></div>
+                        <div><dt>Breaks down at</dt><dd>Explaining itself. A zero for something you haven't turned in lands in the total like a real score, and category weights stay opaque.</dd></div>
+                    </dl>
+                    <p class="app-verdict">Trust its numbers, not its narrative.</p>
+                </article>
+
+                <article class="app-card">
+                    <p class="app-kicker">ad-hoc calculators</p>
+                    <h3>RogerHub, Excel sheets</h3>
+                    <p class="app-what">One formula for one question: what do I need on the final to keep my A?</p>
+                    <dl class="app-facts">
+                        <div><dt>Wins at</dt><dd>Speed. No account, no sync, no permission — type numbers, get an answer.</dd></div>
+                        <div><dt>Breaks down at</dt><dd>Anything past a single course and a single term: no history, no drop rules, no GPA picture.</dd></div>
+                    </dl>
+                    <p class="app-verdict">Great at the one question, blind to the semester around it.</p>
+                </article>
+
+                <article class="app-card">
+                    <p class="app-kicker">other grade apps</p>
+                    <h3>GradeWay, <a href="https://gradiate.app/" target="_blank" rel="noopener">Gradiate</a></h3>
+                    <p class="app-what">Mobile apps that pull grades from a supported portal and layer GPA goals and alerts on top.</p>
+                    <dl class="app-facts">
+                        <div><dt>Wins at</dt><dd>Polished mobile UI, notifications, and zero manual entry once a portal is linked.</dd></div>
+                        <div><dt>Breaks down at</dt><dd>Portal dependence (HAC, PowerSchool), closed data, and what-ifs that inherit the portal's own category math.</dd></div>
+                    </dl>
+                    <p class="app-verdict">Convenient if your school is on the list. Einstein doesn't need a list.</p>
+                </article>
+
+                <article class="app-card app-card-einstein">
+                    <p class="app-kicker">einstein</p>
+                    <h3>Explain first, then simulate</h3>
+                    <p class="app-what">Reads course files you own, decomposes every grade change, and models the semester split explicitly — categories weighted inside the coursework share, the final weighted on its own.</p>
+                    <dl class="app-facts">
+                        <div><dt>Wins at</dt><dd>Saying why a number moved, and exactly what the next one has to be.</dd></div>
+                        <div><dt>Breaks down at</dt><dd>It's early: there's no portal sync yet, so a course starts as a file you write or import.</dd></div>
+                    </dl>
+                    <p class="app-verdict">Different trade: less automation, more explanation, and the data stays yours.</p>
+                </article>
+            </div>
+
         </section>
 
         <!-- ============ WHAT-IF LAB TEASER ============ -->
@@ -383,119 +384,5 @@
     </footer>
 
     <script src="./script.js"></script>
-    <script>
-        // Minimal interactive teaser for the landing page
-        (function() {
-            const slider = document.getElementById('simPreviewSlider');
-            const valueText = document.getElementById('simPreviewValue');
-            const overall = document.getElementById('simPreviewOverall');
-            const required = document.getElementById('simPreviewRequired');
-            const gpaOutput = document.getElementById('simPreviewGpa');
-            if (!slider) return;
-
-            const rows = [
-                { avg: 'labMajorAvg', weight: 'labMajorWeight' },
-                { avg: 'labMinorAvg', weight: 'labMinorWeight' },
-                { avg: 'labOtherAvg', weight: 'labOtherWeight' }
-            ];
-            const target = 90.0;
-
-            function num(id) {
-                const el = document.getElementById(id);
-                const v = el ? parseFloat(el.value) : NaN;
-                return Number.isFinite(v) ? v : 0;
-            }
-
-            // Rough 4.0-scale mapping so the preview can show the GPA impact.
-            function toGpaPoints(pct) {
-                if (pct >= 93) return 4.0;
-                if (pct >= 90) return 3.7;
-                if (pct >= 87) return 3.3;
-                if (pct >= 83) return 3.0;
-                if (pct >= 80) return 2.7;
-                if (pct >= 77) return 2.3;
-                if (pct >= 73) return 2.0;
-                if (pct >= 70) return 1.7;
-                if (pct >= 67) return 1.3;
-                if (pct >= 65) return 1.0;
-                return 0;
-            }
-
-            // Five other courses sit at a 3.60 average; this course is the sixth.
-            const OTHER_COURSES = 5;
-            const OTHER_GPA = 3.6;
-
-            function recalc() {
-                const proj = parseFloat(slider.value) || 0;
-                valueText.textContent = proj;
-
-                // 1. Categories are weighted *inside* the coursework share, so
-                //    normalise by the sum of their weights instead of assuming 100.
-                let weightedPoints = 0;
-                let weightSum = 0;
-                rows.forEach((row) => {
-                    const w = num(row.weight);
-                    weightedPoints += num(row.avg) * w;
-                    weightSum += w;
-                });
-                const courseworkAvg = weightSum > 0 ? weightedPoints / weightSum : 0;
-
-                // 2. The coursework share and the final share are complements.
-                const cwPct = Math.min(100, Math.max(0, num('labCourseworkWeight')));
-                const cwShare = cwPct / 100;
-                const finalShare = 1 - cwShare;
-
-                // 3. (coursework × share) + (final × share) = semester grade.
-                const projOverall = courseworkAvg * cwShare + proj * finalShare;
-
-                // Required final score to land exactly on the target.
-                let req;
-                if (finalShare <= 0.0001) {
-                    req = courseworkAvg >= target ? 0 : Infinity;
-                } else {
-                    req = (target - courseworkAvg * cwShare) / finalShare;
-                }
-
-                overall.textContent = projOverall.toFixed(1) + '%';
-                if (finalShare <= 0.0001) {
-                    required.innerHTML = `<span style="color:var(--text-meta);font-size:0.7em;">final not counted</span>`;
-                } else if (req > 100) {
-                    required.innerHTML = `<span style="color:#e07a5f;">&gt;100%</span>`;
-                } else if (req <= 0) {
-                    required.innerHTML = `<span style="color:#81b29a;">0%</span> <span style="font-size:0.8em;color:var(--text-meta);">(locked)</span>`;
-                } else {
-                    required.textContent = req.toFixed(1) + '%';
-                }
-
-                const termGpa = (OTHER_COURSES * OTHER_GPA + toGpaPoints(projOverall)) / (OTHER_COURSES + 1);
-                if (gpaOutput) gpaOutput.textContent = termGpa.toFixed(2);
-
-                // Keep the table honest about what it is showing.
-                const cwAvgCell = document.getElementById('labCourseworkAvg');
-                const cwTotalCell = document.getElementById('labCourseworkTotal');
-                const finalWeightCell = document.getElementById('labFinalWeightCell');
-                const cwShareText = document.getElementById('labCourseworkShare');
-                const finalShareText = document.getElementById('labFinalShare');
-                const mathNote = document.getElementById('labMathNote');
-
-                if (cwAvgCell) cwAvgCell.textContent = courseworkAvg.toFixed(1) + '%';
-                if (cwTotalCell) cwTotalCell.textContent = weightSum;
-                if (finalWeightCell) finalWeightCell.textContent = (finalShare * 100).toFixed(0) + '%';
-                if (cwShareText) cwShareText.textContent = cwPct.toFixed(0) + '%';
-                if (finalShareText) finalShareText.textContent = (finalShare * 100).toFixed(0) + '%';
-                if (mathNote) {
-                    mathNote.textContent =
-                        `(${courseworkAvg.toFixed(1)}% coursework × ${cwPct.toFixed(0)}%) + ` +
-                        `(${proj}% final × ${(finalShare * 100).toFixed(0)}%) = ${projOverall.toFixed(1)}%`;
-                }
-            }
-
-            slider.addEventListener('input', recalc);
-            document.querySelectorAll('.lab-table input, #labCourseworkWeight').forEach((input) => {
-                input.addEventListener('input', recalc);
-            });
-            recalc();
-        })();
-    </script>
 </body>
 </html>

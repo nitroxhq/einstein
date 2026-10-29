@@ -410,3 +410,118 @@ function getLetterGrade(score) {
   return 'F';
 }
 
+
+// -----------------------------------------------------------------------------
+// Landing page interactive teaser (moved from index.html inline script)
+// -----------------------------------------------------------------------------
+        (function() {
+            const slider = document.getElementById('simPreviewSlider');
+            const valueText = document.getElementById('simPreviewValue');
+            const overall = document.getElementById('simPreviewOverall');
+            const required = document.getElementById('simPreviewRequired');
+            const gpaOutput = document.getElementById('simPreviewGpa');
+            if (!slider) return;
+
+            const rows = [
+                { avg: 'labMajorAvg', weight: 'labMajorWeight' },
+                { avg: 'labMinorAvg', weight: 'labMinorWeight' },
+                { avg: 'labOtherAvg', weight: 'labOtherWeight' }
+            ];
+            const target = 90.0;
+
+            function num(id) {
+                const el = document.getElementById(id);
+                const v = el ? parseFloat(el.value) : NaN;
+                return Number.isFinite(v) ? v : 0;
+            }
+
+            // Rough 4.0-scale mapping so the preview can show the GPA impact.
+            function toGpaPoints(pct) {
+                if (pct >= 93) return 4.0;
+                if (pct >= 90) return 3.7;
+                if (pct >= 87) return 3.3;
+                if (pct >= 83) return 3.0;
+                if (pct >= 80) return 2.7;
+                if (pct >= 77) return 2.3;
+                if (pct >= 73) return 2.0;
+                if (pct >= 70) return 1.7;
+                if (pct >= 67) return 1.3;
+                if (pct >= 65) return 1.0;
+                return 0;
+            }
+
+            // Five other courses sit at a 3.60 average; this course is the sixth.
+            const OTHER_COURSES = 5;
+            const OTHER_GPA = 3.6;
+
+            function recalc() {
+                const proj = parseFloat(slider.value) || 0;
+                valueText.textContent = proj;
+
+                // 1. Categories are weighted *inside* the coursework share, so
+                //    normalise by the sum of their weights instead of assuming 100.
+                let weightedPoints = 0;
+                let weightSum = 0;
+                rows.forEach((row) => {
+                    const w = num(row.weight);
+                    weightedPoints += num(row.avg) * w;
+                    weightSum += w;
+                });
+                const courseworkAvg = weightSum > 0 ? weightedPoints / weightSum : 0;
+
+                // 2. The coursework share and the final share are complements.
+                const cwPct = Math.min(100, Math.max(0, num('labCourseworkWeight')));
+                const cwShare = cwPct / 100;
+                const finalShare = 1 - cwShare;
+
+                // 3. (coursework × share) + (final × share) = semester grade.
+                const projOverall = courseworkAvg * cwShare + proj * finalShare;
+
+                // Required final score to land exactly on the target.
+                let req;
+                if (finalShare <= 0.0001) {
+                    req = courseworkAvg >= target ? 0 : Infinity;
+                } else {
+                    req = (target - courseworkAvg * cwShare) / finalShare;
+                }
+
+                overall.textContent = projOverall.toFixed(1) + '%';
+                if (finalShare <= 0.0001) {
+                    required.innerHTML = `<span style="color:var(--text-meta);font-size:0.7em;">final not counted</span>`;
+                } else if (req > 100) {
+                    required.innerHTML = `<span style="color:#e07a5f;">&gt;100%</span>`;
+                } else if (req <= 0) {
+                    required.innerHTML = `<span style="color:#81b29a;">0%</span> <span style="font-size:0.8em;color:var(--text-meta);">(locked)</span>`;
+                } else {
+                    required.textContent = req.toFixed(1) + '%';
+                }
+
+                const termGpa = (OTHER_COURSES * OTHER_GPA + toGpaPoints(projOverall)) / (OTHER_COURSES + 1);
+                if (gpaOutput) gpaOutput.textContent = termGpa.toFixed(2);
+
+                // Keep the table honest about what it is showing.
+                const cwAvgCell = document.getElementById('labCourseworkAvg');
+                const cwTotalCell = document.getElementById('labCourseworkTotal');
+                const finalWeightCell = document.getElementById('labFinalWeightCell');
+                const cwShareText = document.getElementById('labCourseworkShare');
+                const finalShareText = document.getElementById('labFinalShare');
+                const mathNote = document.getElementById('labMathNote');
+
+                if (cwAvgCell) cwAvgCell.textContent = courseworkAvg.toFixed(1) + '%';
+                if (cwTotalCell) cwTotalCell.textContent = weightSum;
+                if (finalWeightCell) finalWeightCell.textContent = (finalShare * 100).toFixed(0) + '%';
+                if (cwShareText) cwShareText.textContent = cwPct.toFixed(0) + '%';
+                if (finalShareText) finalShareText.textContent = (finalShare * 100).toFixed(0) + '%';
+                if (mathNote) {
+                    mathNote.textContent =
+                        `(${courseworkAvg.toFixed(1)}% coursework × ${cwPct.toFixed(0)}%) + ` +
+                        `(${proj}% final × ${(finalShare * 100).toFixed(0)}%) = ${projOverall.toFixed(1)}%`;
+                }
+            }
+
+            slider.addEventListener('input', recalc);
+            document.querySelectorAll('.lab-table input, #labCourseworkWeight').forEach((input) => {
+                input.addEventListener('input', recalc);
+            });
+            recalc();
+        })();
