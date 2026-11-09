@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade impact — Einstein</title>
+    <meta name="description" content="Einstein workspace: what moved in your grades, by how much, and why — plus a what-if projection for grades that haven't landed yet.">
+    <meta name="theme-color" content="#3232ff">
+
+    <script src="../theme.js"></script>
+    <link rel="stylesheet" href="./app.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+<body class="app-body">
+
+    <div class="app-shell">
+        <div id="app-nav" class="app-nav-slot"></div>
+
+        <main class="app-main">
+
+            <!-- ============ TOP BAR ============ -->
+            <header class="app-topbar">
+                <div class="app-greeting">
+                    <h1>Good afternoon, <em>Maya.</em></h1>
+                    <p class="app-sub">Your grades are steady. AP Calculus is doing the most work this week.</p>
+                </div>
+
+                <div class="app-topbar-right">
+                    <div class="app-controls">
+                        <button class="period-pill" type="button" id="periodBtn">
+                            <svg class="period-pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+                            <span class="period-pill-text">
+                                <span class="period-label">Grading period</span>
+                                <span class="period-value">3rd six weeks · 18 days left</span>
+                            </span>
+                            <svg class="period-pill-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
+
+                        <button class="app-icon-btn" type="button" id="bellBtn" aria-label="Notifications">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+                        </button>
+
+                        <button class="app-btn app-btn--outline" type="button" id="syncBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/></svg>
+                            Sync HAC
+                        </button>
+
+                        <button class="app-btn app-btn--primary" type="button" id="addGradeBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                            Add grade
+                        </button>
+                    </div>
+
+                    <p class="app-status">
+                        <span class="app-status-dot" aria-hidden="true"></span>
+                        HAC connected
+                        <span class="app-status-sep" aria-hidden="true">·</span>
+                        Last sync 2:14 PM
+                        <span class="app-status-sep" aria-hidden="true">·</span>
+                        4 new grades
+                    </p>
+                </div>
+            </header>
+
+            <!-- ============ STANDING CARDS ============ -->
+            <section class="stat-row" aria-label="Current standing">
+
+                <article class="stat-card stat-card--blue">
+                    <div class="stat-top">
+                        <span class="stat-label">6-week grade</span>
+                        <span class="stat-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/></svg>
+                        </span>
+                    </div>
+                    <div class="stat-value">92.4<span class="stat-unit">%</span> <span class="stat-letter">A</span></div>
+                    <div class="stat-foot">
+                        <span class="stat-delta tone-pos">↑ 1.2 <span class="stat-delta-note">since last sync</span></span>
+                        <svg class="stat-spark" viewBox="0 0 80 30" preserveAspectRatio="none" aria-hidden="true"><path d="M2 25C14 23 20 21 28 22C36 23 42 17 50 14C58 11 68 8 78 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Semester grade</span>
+                        <span class="stat-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5.5-5.5 3.5 3L20 7"/><path d="M14 7h6v6"/></svg>
+                        </span>
+                    </div>
+                    <div class="stat-value">91.8<span class="stat-unit">%</span> <span class="stat-letter">A−</span></div>
+                    <div class="stat-foot">
+                        <span class="stat-delta tone-pos">↑ 0.4 <span class="stat-delta-note">projected final</span></span>
+                        <svg class="stat-spark" viewBox="0 0 80 30" preserveAspectRatio="none" aria-hidden="true"><path d="M2 26C12 25 22 24 32 22C42 20 50 16 60 13C68 11 74 8 78 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Cumulative GPA</span>
+                        <span class="stat-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4 9 4.5-9 4.5-9-4.5L12 4Z"/><path d="M6.5 10.6V16c0 1.4 2.5 2.8 5.5 2.8s5.5-1.4 5.5-2.8v-5.4"/></svg>
+                        </span>
+                    </div>
+                    <div class="stat-value">3.72 <span class="stat-unit">/ 4.0</span></div>
+                    <div class="stat-foot">
+                        <span class="stat-delta tone-pos">↑ 0.06 <span class="stat-delta-note">weighted 4.18</span></span>
+                        <svg class="stat-spark" viewBox="0 0 80 30" preserveAspectRatio="none" aria-hidden="true"><path d="M2 25C14 24 24 22 34 20C44 18 54 15 64 11C70 8 74 6 78 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </article>
+
+                <article class="stat-card stat-card--sync">
+                    <div class="stat-top">
+                        <span class="sync-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/></svg>
+                        </span>
+                        <span class="sync-pill"><span class="app-status-dot" aria-hidden="true"></span> Connected</span>
+                    </div>
+                    <p class="sync-title">HAC is in sync.</p>
+                    <p class="sync-copy">4 grades imported at 2:14 PM. Next automatic check in 46 minutes.</p>
+                    <a class="sync-link" href="#" data-placeholder="Imported grades">Review imported grades <span aria-hidden="true">→</span></a>
+                </article>
+
+            </section>
+
+            <!-- ============ IMPACT + WHAT-IF ============ -->
+            <div class="app-grid">
+
+                <section class="app-card grade-impact" aria-labelledby="impactTitle">
+                    <div class="card-head">
+                        <div class="card-head-main">
+                            <span class="card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5.5-5.5 3.5 3L20 7"/><path d="M14 7h6v6"/></svg>
+                            </span>
+                            <div>
+                                <h2 class="card-title" id="impactTitle">Grade impact</h2>
+                                <p class="card-sub">What moved, by how much, and why.</p>
+                            </div>
+                        </div>
+                        <label class="search-field">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+                            <input type="search" id="impactSearch" placeholder="Search grades" aria-label="Search grades">
+                        </label>
+                    </div>
+
+                    <div class="course-pills" role="group" aria-label="Filter by course">
+                        <button class="course-pill" type="button" data-course="calculus" style="--pill-color:#3232ff">
+                            <span class="pill-dot" aria-hidden="true"></span>
+                            <span class="pill-body">
+                                <span class="pill-name">AP Calculus</span>
+                                <span class="pill-score-row">
+                                    <span class="pill-score">94.2% <em>A</em></span>
+                                    <span class="pill-delta tone-pos">+1.8</span>
+                                </span>
+                            </span>
+                        </button>
+                        <button class="course-pill" type="button" data-course="english" style="--pill-color:#167a55">
+                            <span class="pill-dot" aria-hidden="true"></span>
+                            <span class="pill-body">
+                                <span class="pill-name">English III</span>
+                                <span class="pill-score-row">
+                                    <span class="pill-score">91.0% <em>A−</em></span>
+                                    <span class="pill-delta tone-pos">+0.4</span>
+                                </span>
+                            </span>
+                        </button>
+                        <button class="course-pill" type="button" data-course="chemistry" style="--pill-color:#d64545">
+                            <span class="pill-dot" aria-hidden="true"></span>
+                            <span class="pill-body">
+                                <span class="pill-name">Chemistry</span>
+                                <span class="pill-score-row">
+                                    <span class="pill-score">88.6% <em>B+</em></span>
+                                    <span class="pill-delta tone-neg">−0.6</span>
+                                </span>
+                            </span>
+                        </button>
+                        <button class="course-pill" type="button" data-course="history" style="--pill-color:#c98a16">
+                            <span class="pill-dot" aria-hidden="true"></span>
+                            <span class="pill-body">
+                                <span class="pill-name">US History</span>
+                                <span class="pill-score-row">
+                                    <span class="pill-score">95.8% <em>A</em></span>
+                                    <span class="pill-delta tone-zero">0.0</span>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="table-head">
+                        <h3 class="table-title">Recent assignments</h3>
+                        <a class="table-link" href="#" data-placeholder="All assignments">View all 28 <span aria-hidden="true">→</span></a>
+                    </div>
+
+                    <div class="table-scroll">
+                        <table class="impact-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Assignment</th>
+                                    <th scope="col">Course</th>
+                                    <th scope="col">Before <span aria-hidden="true">→</span> After</th>
+                                    <th scope="col">Impact</th>
+                                    <th scope="col">Source</th>
+                                    <th scope="col"><span class="visually-hidden">Edit</span></th>
+                                </tr>
+                            </thead>
+                            <tbody id="impactRows">
+                                <tr data-course="calculus">
+                                    <td>
+                                        <span class="assign-name">Derivatives unit test</span>
+                                        <span class="assign-meta">Test · 100 pts · Today</span>
+                                    </td>
+                                    <td class="assign-course">AP Calculus</td>
+                                    <td class="assign-move"><span class="move-before">92.4</span> <span class="move-arrow" aria-hidden="true">→</span> <span class="move-after">94.2</span></td>
+                                    <td><span class="chip tone-pos">+1.8</span></td>
+                                    <td class="assign-source">HAC sync</td>
+                                    <td><button class="row-edit" type="button" aria-label="Edit Derivatives unit test" data-placeholder="Edit grade">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-3-3L5 17v3Z"/><path d="m14.5 6.5 3 3"/></svg>
+                                    </button></td>
+                                </tr>
+                                <tr data-course="english">
+                                    <td>
+                                        <span class="assign-name">Gatsby close reading</span>
+                                        <span class="assign-meta">Essay · 50 pts · Sep 29</span>
+                                    </td>
+                                    <td class="assign-course">English III</td>
+                                    <td class="assign-move"><span class="move-before">90.6</span> <span class="move-arrow" aria-hidden="true">→</span> <span class="move-after">91.0</span></td>
+                                    <td><span class="chip tone-pos">+0.4</span></td>
+                                    <td class="assign-source">HAC sync</td>
+                                    <td><button class="row-edit" type="button" aria-label="Edit Gatsby close reading" data-placeholder="Edit grade">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-3-3L5 17v3Z"/><path d="m14.5 6.5 3 3"/></svg>
+                                    </button></td>
+                                </tr>
+                                <tr data-course="chemistry">
+                                    <td>
+                                        <span class="assign-name">Stoichiometry lab</span>
+                                        <span class="assign-meta">Lab · 40 pts · Sep 26</span>
+                                    </td>
+                                    <td class="assign-course">Chemistry</td>
+                                    <td class="assign-move"><span class="move-before">89.2</span> <span class="move-arrow" aria-hidden="true">→</span> <span class="move-after">88.6</span></td>
+                                    <td><span class="chip tone-neg">−0.6</span></td>
+                                    <td class="assign-source">Manual</td>
+                                    <td><button class="row-edit" type="button" aria-label="Edit Stoichiometry lab" data-placeholder="Edit grade">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-3-3L5 17v3Z"/><path d="m14.5 6.5 3 3"/></svg>
+                                    </button></td>
+                                </tr>
+                                <tr data-course="history">
+                                    <td>
+                                        <span class="assign-name">New Deal exit ticket</span>
+                                        <span class="assign-meta">Daily · 10 pts · Sep 27</span>
+                                    </td>
+                                    <td class="assign-course">US History</td>
+                                    <td class="assign-move"><span class="move-before">95.8</span> <span class="move-arrow" aria-hidden="true">→</span> <span class="move-after">95.8</span></td>
+                                    <td><span class="chip tone-zero">0.0</span></td>
+                                    <td class="assign-source">HAC sync</td>
+                                    <td><button class="row-edit" type="button" aria-label="Edit New Deal exit ticket" data-placeholder="Edit grade">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-3-3L5 17v3Z"/><path d="m14.5 6.5 3 3"/></svg>
+                                    </button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="table-empty" id="impactEmpty" hidden>No assignments match that search.</p>
+                </section>
+
+                <section class="app-card what-if" aria-labelledby="whatIfTitle">
+                    <div class="card-head card-head--stack">
+                        <div class="card-head-main">
+                            <span class="card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6l-5.4 9.4A2 2 0 0 0 6.3 21h11.4a2 2 0 0 0 1.7-2.6L14 9V3"/><path d="M7.5 15h9"/></svg>
+                            </span>
+                            <div>
+                                <h2 class="card-title card-title--serif" id="whatIfTitle">What if?</h2>
+                                <p class="card-sub">Test a grade before it lands.</p>
+                            </div>
+                        </div>
+                        <span class="live-pill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/></svg>
+                            Live projection
+                        </span>
+                    </div>
+
+                    <div class="what-if-fields">
+                        <label class="field">
+                            <span class="field-label">Course</span>
+                            <span class="select-wrap">
+                                <select id="wiCourse">
+                                    <option value="calculus">AP Calculus</option>
+                                    <option value="english">English III</option>
+                                    <option value="chemistry">Chemistry</option>
+                                    <option value="history">US History</option>
+                                </select>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                            </span>
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Category</span>
+                            <span class="select-wrap">
+                                <select id="wiCategory"></select>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                            </span>
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Expected score</span>
+                            <span class="input-wrap">
+                                <input type="number" id="wiScore" value="96" min="0" max="100" step="1" inputmode="numeric">
+                                <span class="input-suffix">/ 100</span>
+                            </span>
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Assignment weight</span>
+                            <span class="input-wrap">
+                                <input type="number" id="wiWeight" value="15" min="0" max="100" step="1" inputmode="numeric">
+                                <span class="input-suffix">%</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="projection">
+                        <div class="projection-head">
+                            <span class="projection-title">Projected impact</span>
+                            <span class="projection-if" id="wiScoredLabel">If scored 96%</span>
+                        </div>
+
+                        <div class="projection-row">
+                            <span class="projection-label">6-week grade</span>
+                            <span class="projection-values">
+                                <span class="proj-before" id="projSixBefore">94.2</span>
+                                <span class="move-arrow" aria-hidden="true">→</span>
+                                <span class="proj-after" id="projSixAfter">95.1</span>
+                                <span class="chip tone-pos" id="projSixChip">+0.9</span>
+                            </span>
+                        </div>
+
+                        <div class="projection-row">
+                            <span class="projection-label">Semester grade</span>
+                            <span class="projection-values">
+                                <span class="proj-before" id="projSemBefore">91.8</span>
+                                <span class="move-arrow" aria-hidden="true">→</span>
+                                <span class="proj-after" id="projSemAfter">92.1</span>
+                                <span class="chip tone-pos" id="projSemChip">+0.3</span>
+                            </span>
+                        </div>
+
+                        <div class="projection-row">
+                            <span class="projection-label">Cumulative GPA</span>
+                            <span class="projection-values">
+                                <span class="proj-before" id="projGpaBefore">3.72</span>
+                                <span class="move-arrow" aria-hidden="true">→</span>
+                                <span class="proj-after" id="projGpaAfter">3.74</span>
+                                <span class="chip tone-pos" id="projGpaChip">+0.02</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <p class="card-note">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+                        Uses your current category weights. This scenario is not saved.
+                    </p>
+                </section>
+
+            </div>
+
+            <!-- ============ TRAJECTORY + READS ============ -->
+            <div class="app-grid app-grid--bottom">
+
+                <section class="app-card trajectory" aria-labelledby="trajTitle">
+                    <div class="card-head">
+                        <div class="card-head-main">
+                            <span class="card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M11 20V4M17 20v-7"/><path d="M3 20h18"/></svg>
+                            </span>
+                            <div>
+                                <h2 class="card-title" id="trajTitle">Grade trajectory</h2>
+                                <p class="card-sub">Six-week average · all courses</p>
+                            </div>
+                        </div>
+                        <div class="trajectory-legend">
+                            <button class="tiny-select" type="button" id="trajRange">
+                                3rd six weeks
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                            </button>
+                            <span class="legend-item"><span class="legend-line legend-line--actual" aria-hidden="true"></span> Actual</span>
+                            <span class="legend-item"><span class="legend-line legend-line--target" aria-hidden="true"></span> 92% target</span>
+                        </div>
+                    </div>
+
+                    <div class="chart-wrap">
+                        <svg class="chart" viewBox="0 0 640 214" role="img" aria-label="Six-week average rose from 87.0% on Aug 19 to 92.4% today, above the 92% target.">
+                            <defs>
+                                <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#3232ff" stop-opacity="0.18"/>
+                                    <stop offset="100%" stop-color="#3232ff" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+
+                            <g class="chart-grid" stroke="currentColor" stroke-width="1">
+                                <line x1="44" y1="16" x2="620" y2="16"/>
+                                <line x1="44" y1="74" x2="620" y2="74"/>
+                                <line x1="44" y1="132" x2="620" y2="132"/>
+                                <line x1="44" y1="190" x2="620" y2="190"/>
+                            </g>
+
+                            <g class="chart-ylabels" fill="currentColor">
+                                <text x="8" y="20">96</text>
+                                <text x="8" y="78">92</text>
+                                <text x="8" y="136">88</text>
+                                <text x="8" y="194">84</text>
+                            </g>
+
+                            <path d="M44 146.5 C76 141 108 136 140 132 C172 128 204 118 236 110 C268 102 300 108 332 106 C364 104 396 96 428 88.5 C460 81 492 79 524 77 C556 75 588 70 620 68 L620 190 L44 190 Z" fill="url(#chartFill)"/>
+                            <path d="M44 146.5 C76 141 108 136 140 132 C172 128 204 118 236 110 C268 102 300 108 332 106 C364 104 396 96 428 88.5 C460 81 492 79 524 77 C556 75 588 70 620 68" fill="none" stroke="#3232ff" stroke-width="3" stroke-linecap="round"/>
+
+                            <line class="chart-target" x1="44" y1="74" x2="620" y2="74"/>
+
+                            <circle cx="620" cy="68" r="5" fill="#3232ff" stroke="var(--app-surface)" stroke-width="3"/>
+
+                            <g class="chart-endlabel">
+                                <rect x="560" y="36" width="60" height="22" rx="11"/>
+                                <text x="590" y="51" text-anchor="middle">92.4%</text>
+                            </g>
+                        </svg>
+
+                        <div class="chart-xlabels" aria-hidden="true">
+                            <span>Aug 19</span>
+                            <span>Aug 26</span>
+                            <span>Sep 2</span>
+                            <span>Sep 9</span>
+                            <span>Sep 16</span>
+                            <span>Sep 23</span>
+                            <span>Today</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="app-card reads" aria-labelledby="readsTitle">
+                    <div class="reads-head">
+                        <div>
+                            <p class="reads-eyebrow">Einstein reads</p>
+                            <h2 class="reads-title" id="readsTitle">What deserves attention</h2>
+                        </div>
+                        <span class="reads-count" aria-label="3 items">3</span>
+                    </div>
+
+                    <ul class="reads-list">
+                        <li class="reads-item">
+                            <span class="reads-icon reads-icon--pos" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+                            </span>
+                            <span class="reads-body">
+                                <span class="reads-line">AP Calculus broke above 94%</span>
+                                <span class="reads-copy">Unit test added the largest lift this period.</span>
+                            </span>
+                            <span class="reads-value tone-pos">+1.8</span>
+                        </li>
+
+                        <li class="reads-item">
+                            <span class="reads-icon reads-icon--warn" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 3 20h18L12 4Z"/><path d="M12 10v4M12 17h.01"/></svg>
+                            </span>
+                            <span class="reads-body">
+                                <span class="reads-line">Chemistry lab pulled down the average</span>
+                                <span class="reads-copy">One strong quiz can recover about half the drop.</span>
+                            </span>
+                            <span class="reads-value tone-neg">−0.6</span>
+                        </li>
+
+                        <li class="reads-item">
+                            <span class="reads-icon reads-icon--zero" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
+                            </span>
+                            <span class="reads-body">
+                                <span class="reads-line">US History stayed steady</span>
+                                <span class="reads-copy">No meaningful movement after the exit ticket.</span>
+                            </span>
+                            <span class="reads-value tone-zero">0.0</span>
+                        </li>
+                    </ul>
+
+                    <p class="reads-foot">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/></svg>
+                        You are 0.4 points above your six-week goal.
+                    </p>
+                </section>
+
+            </div>
+
+        </main>
+    </div>
+
+    <div class="app-toast" id="appToast" role="status" aria-live="polite"></div>
+
+    <script src="./app.js"></script>
+</body>
+</html>

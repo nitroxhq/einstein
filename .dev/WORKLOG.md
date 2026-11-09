@@ -5,6 +5,59 @@
 
 ---
 
+## 11.08.2026 4:49pm CST — App shell in `/app` with the Grade impact view
+
+### Overview
+
+The dashboard in `assets/all insp/ui drafts/Einstein dashboard.png` is now a real app surface rather than a site page. `app/index.html` is the Grade impact workspace: blue sidebar, greeting, four standing cards, the assignment impact table, a live what-if projection, the six-week trajectory chart, and the "Einstein reads" panel. Sidebar links for the four unbuilt sections are explicit placeholders — they answer with a toast instead of navigating.
+
+### What changed
+
+- **`app/index.html`** — the Grade impact view: topbar (greeting, grading period, notifications, Sync HAC, Add grade, HAC status line), four standing cards (6-week grade, semester grade, cumulative GPA, HAC sync), the assignments table with course pills and search, the what-if card, the trajectory chart, and the reads panel.
+- **`app/navbar.html`** — app-specific sidebar: brand mark, WORKSPACE label, Overview / Grade impact / Courses / What-if lab / Gradebook, Settings, theme cycle, Maya Chen profile.
+- **`app/app.css`** — the app's own token set (`--app-*`), light-first with `light-dark()` dark values, layout for the 248px sidebar plus content, table, what-if panel, chart, and responsive breakpoints at 1220/1080/900/640px.
+- **`app/app.js`** — sidebar fetch with an inline fallback (same pattern as the landing page), three-way theme cycle wiring, greeting by hour, course-pill filtering, search filtering, the projection math, and toasts for stubbed actions.
+- **`app/app.ts`** — untouched; still the 1-byte placeholder that predates this work.
+
+### Decisions
+
+- **App chrome, not a reused landing navbar.** The landing page is a marketing surface; the UI draft is a workspace. The sidebar keeps the landing page's visual language (same brand mark, same three-way theme cycle, same vanilla no-build approach) but is its own component.
+- **Sidebar partial via `fetch()` with a fallback.** Matches the existing `navbar.html` + `script.js` pattern, and the fallback keeps the app usable when opened over `file://` where fetch is blocked.
+- **Placeholders are honest.** Every unbuilt link and button says it is a placeholder in this build instead of silently doing nothing.
+- **Projection model is simplified and stated.** `delta6 = (weight / 100) × (score − category average)`, `semester = +0.33 × delta6`, `gpa = +0.022 × delta6`; the constants are named at the top of the section and the card says the scenario is not saved. Calibrated so AP Calculus 96 / 15% on Tests (category average 90.0) reads +0.9 / +0.3 / +0.02, matching the mock.
+- **Pills are filters, and they push the selection into the what-if course select.** One interaction, two visible effects; clicking the active pill clears the filter.
+- **Serif = Newsreader.** The draft's display type is a serif; Newsreader was already added to the repo, so the greeting, "What if?", "What deserves attention", letter grades, and italics use it.
+- **`data-theme` drives `color-scheme`.** `light-dark()` alone follows the OS, so the app sets `:root[data-theme="light"|"dark"] { color-scheme: ... }` and the toggle now actually flips the app. The landing page still has the older behavior.
+
+### Validation
+
+- Served at `http://localhost:8123/app/` (python `http.server`): 200, no console errors.
+- Desktop 1440×900: light and dark both render; sidebar, cards, table, what-if, chart and reads align; the page does not scroll horizontally.
+- Interactions: the Chemistry pill filters the table to the Stoichiometry row and switches the what-if to Chemistry (88.6 → 90.3, +1.7); score 80 flips the same projection negative (88.6 → 87.8, −0.8); a placeholder link shows the toast.
+- Mobile 390×844: single-column cards, icon-only nav, no clipped pill, no page-level horizontal scroll.
+- **Bug fixed during validation:** the 610px-wide assignments table widened the *document* to 605px at a 390px viewport even though its wrapper scrolled — `overflow-x: auto` did not contain the layout overflow in this browser. `.table-scroll` now sets `contain: paint`, which measured 326/326 afterwards (page probe since removed). Mobile table min-width trimmed to 540px.
+- Not verified: the `file://` fallback path (fetch fails → inline nav), Firefox/Safari rendering, and whether the draft's fonts are exactly Newsreader/InterVariable/Geist Mono.
+
+### Subtasks
+
+- [x] App shell in `/app` with the UI draft's sidebar sections
+- [x] Grade impact view: standing cards, assignments table, what-if card, trajectory chart, reads panel
+- [x] Placeholder navigation and stubbed actions answering with a toast
+- [x] Light/dark support through the shared theme bootstrap
+- [x] Responsive pass at 1440 / 390, with the horizontal-overflow bug fixed
+- [ ] Link the app from the landing page (deliberately left alone here)
+- [ ] Build the other four sections and replace the mock course data with real stored grades
+
+### Follow-ups
+
+- The four placeholder sections still need real pages; the sidebar partial is ready to be reused.
+- The projection constants are a UI-level estimate, not the category-weight engine described in `docs/`.
+- The mobile table still scrolls horizontally inside its card; a stacked row layout would read better if the table grows past six columns.
+
+— Model: DeepSeek V4.1 Flash Free (opencode, provider: opencode)
+
+---
+
 ## 10.27.2026 12:05am CDT — About page, bottom CTA, tighter spacing, lab GPA preview
 
 ### Overview
