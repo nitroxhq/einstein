@@ -1,0 +1,22 @@
+# Keep in git for design/AI reference; do not ship to Vercel deploys.
+# https://vercel.com/docs/deployments/vercel-ignore
+
+# Dev / docs / design dumps (multi-MB screenshots + SVGs)
+.dev/
+.docs/
+docs/
+.openchamber/
+assets/all insp/
+assets/@*/
+
+# Full Google Fonts source kits (TTF + static weights).
+# Keep only the .woff2 files CSS actually loads.
+assets/fonts/@ folders/
+**/*.ttf
+**/*.otf
+
+# Scratch
+.git/
+.github/
+*.md
+!README.md
